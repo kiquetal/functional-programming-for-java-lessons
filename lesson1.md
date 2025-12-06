@@ -1,4 +1,5 @@
-### Think in state not in behaviour
+### Think in behaviour not state.
+
 
 
 The interface is the decision marker.

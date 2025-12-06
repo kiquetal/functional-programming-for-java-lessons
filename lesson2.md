@@ -2,6 +2,11 @@
 #### A question of ownership
 
 
+You can create a class inside another class, so basically you could put the CriteraObject in the Object
+But you need to use static for innerClass and nestedCLass for the instance type.
+
+
+
 #### A question of quantity
 
 

@@ -21,3 +21,17 @@ class RedCarCriterion implements CarCriterion{
 }
 
 ```java
+
+public static List<Car> getCarsByCriterion(Iterable<Car> in, CarCriterion crit) {
+
+List<Car> output = new ArrayList<>()
+
+for (Car c: in) {
+    if cri.test(c) {
+     output.add(c);
+}
+
+}
+
+}
+```java

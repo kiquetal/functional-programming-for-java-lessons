@@ -20,6 +20,9 @@ class RedCarCriterion implements CarCriterion{
 }
 
 }
+```
+
+The function to deal with different types.
 
 ```java
 
@@ -35,4 +38,30 @@ for (Car c: in) {
 }
 
 }
+
+
+```
+
+Use a state for specific comparision
+
 ```java
+
+class CarGasLevel implements CarCriterion {
+
+int threshold
+
+CarGasLevel(int threshold) {
+this.threshold = threshold
+}
+
+public boolen test (Car c) {
+
+return c.getCarLevel() >= threshold;
+
+}
+
+
+}
+```
+
+

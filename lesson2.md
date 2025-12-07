@@ -8,12 +8,11 @@ But you need to use static for innerClass and nestedCLass for the instance type.
 
 #### A question of quantity
 
-One possibility static field garantize this to only be use one static
-
-
+One possibility static field garantize this to only be use one static.
 
 #### A question of visibility
 
+We are going to hide some class to improve security and modularziation.
 
 
 

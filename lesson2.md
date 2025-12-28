@@ -72,5 +72,5 @@ c -> c.getColor().equals("Red");
 
 ####  Demostrating generalization
 
-
+getCarByCriterion(Iterable<Car> in, CarCriterion crit){}
 

@@ -70,6 +70,7 @@ Annotation for a interface with only one abstract method.
 c -> c.getColor().equals("Red");
 
 
-####  Demonostrating generalization
+####  Demostrating generalization
+
 
 

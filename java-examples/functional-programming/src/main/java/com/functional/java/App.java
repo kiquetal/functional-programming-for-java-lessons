@@ -12,11 +12,16 @@ public class App
 
         CarCriteria n = (Car c) -> {
             return c.getColor().equals("RED");
-        }
+        };
     }
 }
 
-interface CarCrieria {
+@FunctionalInterface
+interface Criterion<E> {
+    boolean test(E e);
+}
+
+interface CarCriteria {
 
     public boolean test( Car c);
 }

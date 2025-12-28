@@ -13,6 +13,15 @@ public class App
         CarCriteria n = (Car c) -> {
             return c.getColor().equals("RED");
         };
+
+        // how to use CarCriteria
+
+
+
+
+    }
+
+    static void executeCriteria(CarCriteria n) {
     }
 }
 

@@ -26,13 +26,18 @@ public boolean test(Car c_
 
 };   //assignment annonymous class
 
-
 #### Simplifying the syntax
 
 
 
-#### Reviweing lambda syntax and rules
+#### Reviewing lambda syntax and rules
 
+
+(c) -> {
+
+   return c.color.equals("Red");
+
+} ;
 
 
 #### Lambda syntax variations part-1

@@ -14,6 +14,17 @@ One possibility static field garantize this to only be use one static.
 
 We are going to hide some class to improve security and modularziation.
 
+Food brownie = new CholocateBrownie():
+
+class ChocolateBrownie implements Food {}
+
+
+Food brownie = CarCriterion() {
+  
+@Override
+public boolean test(Car c_
+
+};   //assignment annonymous class
 
 
 #### Simplifying the syntax

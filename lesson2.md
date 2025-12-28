@@ -63,8 +63,11 @@ s -> s.something();
 
 #### The @FunctionalInterface annotation
 
+Annotation for a interface with only one abstract method.
 
 #### Giving type to a lambda
+
+c -> c.getColor().equals("Red");
 
 
 ####  Demonostrating generalization

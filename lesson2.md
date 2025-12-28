@@ -43,8 +43,6 @@ public boolean test(Car c_
 #### Lambda syntax variations part-1
 
 
-
-
 #### Lambda syntax variations part-2
 
 

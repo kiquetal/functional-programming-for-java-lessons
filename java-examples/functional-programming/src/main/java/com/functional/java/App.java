@@ -10,8 +10,8 @@ public class App
     {
         System.out.println( "Hello World!" );
 
-        CarCriteria n = (c) -> {
-            return c.
+        CarCriteria n = (Car c) -> {
+            return c.getColor().equals("RED");
         }
     }
 }

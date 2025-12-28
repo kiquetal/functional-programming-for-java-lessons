@@ -52,9 +52,16 @@ private staic final Comparator<Car> gasComparator = (Car o1,Car o2) -> {
 
 #### Lambda syntax variations part-2
 
+(s) -> {
+  return s.something();
+}
+
+s -> s.something();
 
 
-#### The @FunctionalINterface annotation
+
+
+#### The @FunctionalInterface annotation
 
 
 #### Giving type to a lambda

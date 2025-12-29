@@ -15,13 +15,16 @@ public class App
         };
 
         // how to use CarCriteria
-
+        executeCriteria(n);
 
 
 
     }
 
     static void executeCriteria(CarCriteria n) {
+    System.out.println("Execute");
+    Car c = new Car();
+    System.out.println(n.test(c));
     }
 }
 

@@ -5,8 +5,6 @@
 
 
 
-
-
 #### Requirements for closure
 
 

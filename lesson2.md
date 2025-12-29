@@ -74,3 +74,16 @@ c -> c.getColor().equals("Red");
 
 getCarByCriterion(Iterable<Car> in, CarCriterion crit){}
 
+
+#### Generalization
+
+Remember to put <E> before the return type
+
+List<String> colors = Arras.asList("LightCOral","pink","orange","gold");
+
+Be aware how the compiler infers the type of the object.
+
+showAll(getByCriterion(colors, criterion);
+
+
+

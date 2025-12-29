@@ -1,5 +1,9 @@
 package com.functional.java;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Hello world!
  *
@@ -15,8 +19,9 @@ public class App
         };
 
         // how to use CarCriteria
-        executeCriteria(n);
+        List<String> colors = Arrays.asList("RED", "GREEN", "BLUE");
 
+        System.out.println(getAllCriterion(colors,  s -> s.equals("BLUE")));
 
 
     }
@@ -26,7 +31,24 @@ public class App
     Car c = new Car();
     System.out.println(n.test(c));
     }
+
+  public  static <E> List<E> getAllCriterion(Iterable<E> inList, Criterion<E> crit) {
+        List<E> list = new ArrayList<>();
+
+        for (E e : inList)
+        {
+            if (crit.test(e))
+            {
+                list.add(e);
+            }
+
+        }
+        return list;
+  }
 }
+
+
+
 
 @FunctionalInterface
 interface Criterion<E> {

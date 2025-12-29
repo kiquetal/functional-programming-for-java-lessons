@@ -6,4 +6,14 @@
 
 
 
-#### 
+
+#### Requirements for closure
+
+
+
+
+#### Combining behaviors - part 1
+
+
+
+#### Combiging behaviors - part 2 

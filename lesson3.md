@@ -10,6 +10,7 @@ use the context
 
 #### Requirements for closure
 
+stack-frame: location where the method is alocated.
 
 
 

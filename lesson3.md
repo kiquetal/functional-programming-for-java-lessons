@@ -3,6 +3,9 @@
 
 #### Improving the behaviour factories
 
+Maybe using the Function<F> 
+
+use the context
 
 
 #### Requirements for closure
@@ -15,3 +18,11 @@
 
 
 #### Combiging behaviors - part 2 
+
+
+
+#### Interfaces for lambdas
+
+
+
+#### Using Predicates in the example

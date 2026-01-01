@@ -25,7 +25,9 @@ Remember about closure, to obtain a reference before returning a function or lam
 
 #### Combining behaviors - part 1
 
-
+filter
+map
+combineThen
 
 #### Combiging behaviors - part 2 
 

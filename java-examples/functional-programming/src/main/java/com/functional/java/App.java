@@ -106,6 +106,14 @@ public class App
 
     }
 
+    public static Criterion<Car> andCriterion(Criterion<Car> crit1, Criterion<Car> crit2) {
+        return c -> crit1.test(c) && crit2.test(c);
+    }
+
+    public static Criterion<Car> orCriterion(Criterion<Car> crit1, Criterion<Car> crit2) {
+        return c -> crit1.test(c) || crit2.test(c);
+    }
+
     public static <E> void showAll(List<E> list, Criterion<E> criterion) {
         for (E element : list) {
             if (criterion.test(element)) {

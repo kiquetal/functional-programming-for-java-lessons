@@ -12,6 +12,10 @@ use the context
 
 stack-frame: location where the method is alocated.
 
+getGass..(threshold) {
+
+ return c-> g.getGass() >= threshold
+}
 
 
 #### Combining behaviors - part 1

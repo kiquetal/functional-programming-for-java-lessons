@@ -29,6 +29,8 @@ filter
 map
 combineThen
 
+Let's create the behaviour
+
 #### Combiging behaviors - part 2 
 
 

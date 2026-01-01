@@ -21,7 +21,7 @@ getGass..(threshold) {
 Changing the value of a variable is not allowed.
 Immutability fits better.
 
-
+Remember about closure, to obtain a reference before returning a function or lambda
 
 #### Combining behaviors - part 1
 

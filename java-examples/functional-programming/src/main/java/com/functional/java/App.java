@@ -52,6 +52,17 @@ public class App
         return c ->
                 colorsSet.contains(c.getColor());
     }
+
+    public static Criterion<Car> getInverse(Criterion<Car> crit) {
+
+        return e -> !crit.test(e);
+
+    }
+    public class CarScratch {
+        public static <E> Criterion<E> negate(Criterion<E> crit) {
+            return  x -> !crit.test(x);
+        }
+    }
 }
 
 

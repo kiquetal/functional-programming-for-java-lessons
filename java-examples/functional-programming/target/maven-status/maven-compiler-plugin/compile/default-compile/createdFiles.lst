@@ -1,1 +1,5 @@
 com/functional/java/App.class
+com/functional/java/Criterion.class
+com/functional/java/Car.class
+com/functional/java/CarCriteria.class
+com/functional/java/App$CarScratch.class

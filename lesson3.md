@@ -15,7 +15,12 @@ stack-frame: location where the method is alocated.
 getGass..(threshold) {
 
  return c-> g.getGass() >= threshold
+
 }
+
+Changing the value of a variable is not allowed.
+Immutability fits better.
+
 
 
 #### Combining behaviors - part 1

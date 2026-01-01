@@ -1,8 +1,6 @@
 package com.functional.java;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Hello world!
@@ -50,17 +48,9 @@ public class App
 
     public static Criterion<Car> getColorCriterion(String... colors)
     {
+        Set<String> colorsSet = new HashSet<>(Arrays.asList(colors));
         return c ->
-        {
-            for (String color : colors)
-            {
-                if (color.equals(c.getColor()))
-                {
-                    return true;
-                }
-            }
-            return false;
-        };
+                colorsSet.contains(c.getColor());
     }
 }
 

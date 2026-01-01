@@ -45,6 +45,23 @@ public class App
         }
         return list;
   }
+
+    //create a method to return a criterion based on colors
+
+    public static Criterion<Car> getColorCriterion(String... colors)
+    {
+        return c ->
+        {
+            for (String color : colors)
+            {
+                if (color.equals(c.getColor()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        };
+    }
 }
 
 

@@ -37,6 +37,27 @@ public class App
         System.out.println("\nToyota cars:");
         showAll(cars, c -> "Toyota".equals(c.getBrand()));
 
+        System.out.println("\n=== Testing andCriterion method ===");
+        System.out.println("\nRed AND Toyota cars:");
+        showAll(cars, andCriterion(getColorCriterion("RED"), c -> "Toyota".equals(c.getBrand())));
+
+        System.out.println("\nRed AND BMW cars:");
+        showAll(cars, andCriterion(getColorCriterion("RED"), c -> "BMW".equals(c.getBrand())));
+
+        System.out.println("\n=== Testing orCriterion method ===");
+        System.out.println("\nRed OR Toyota cars:");
+        showAll(cars, orCriterion(getColorCriterion("RED"), c -> "Toyota".equals(c.getBrand())));
+
+        System.out.println("\nBlue OR Green cars:");
+        showAll(cars, orCriterion(getColorCriterion("BLUE"), getColorCriterion("GREEN")));
+
+        System.out.println("\n=== Testing combined criteria ===");
+        System.out.println("\n(Red OR Blue) AND Toyota cars:");
+        showAll(cars, andCriterion(
+            orCriterion(getColorCriterion("RED"), getColorCriterion("BLUE")),
+            c -> "Toyota".equals(c.getBrand())
+        ));
+
     }
 
     private static List<Car> createTestCars() {

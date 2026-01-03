@@ -2,6 +2,9 @@ package com.functional.java;
 
 import java.util.*;
 
+import static com.functional.java.Criterion.andCriterion;
+import static com.functional.java.Criterion.orCriterion;
+
 /**
  * Hello world!
  *
@@ -60,6 +63,15 @@ public class App
 
     }
 
+    private static Criterion<Car> getColorCriterion(String... colors) {
+       //implement the Criterion for this color
+
+        return c -> {
+
+            return  Arrays.stream(colors).anyMatch(color -> color.equals(c.getColor()));
+        };
+    }
+
     private static List<Car> createTestCars() {
         List<Car> cars = new ArrayList<>();
 
@@ -114,12 +126,7 @@ public class App
 
     //create a method to return a criterion based on colors
 
-    public static Criterion<Car> getColorCriterion(String... colors)
-    {
-        Set<String> colorsSet = new HashSet<>(Arrays.asList(colors));
-        return c ->
-                colorsSet.contains(c.getColor());
-    }
+
 
     public static Criterion<Car> getInverse(Criterion<Car> crit) {
 
@@ -127,13 +134,7 @@ public class App
 
     }
 
-    public static Criterion<Car> andCriterion(Criterion<Car> crit1, Criterion<Car> crit2) {
-        return c -> crit1.test(c) && crit2.test(c);
-    }
 
-    public static Criterion<Car> orCriterion(Criterion<Car> crit1, Criterion<Car> crit2) {
-        return c -> crit1.test(c) || crit2.test(c);
-    }
 
     public static <E> void showAll(List<E> list, Criterion<E> criterion) {
         for (E element : list) {
@@ -153,10 +154,6 @@ public class App
 
 
 
-@FunctionalInterface
-interface Criterion<E> {
-    boolean test(E e);
-}
 
 interface CarCriteria {
 

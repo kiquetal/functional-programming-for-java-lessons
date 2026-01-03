@@ -12,5 +12,9 @@ static  <E> Criterion<E> orCriterion(Criterion<E> crit1, Criterion<E> crit2) {
         return c -> crit1.test(c) || crit2.test(c);
     }
 
+    static <E> Criterion<E> negate(Criterion<E> crt)  {
+     return e -> !crt.test(e);
+    }
+
 
 }

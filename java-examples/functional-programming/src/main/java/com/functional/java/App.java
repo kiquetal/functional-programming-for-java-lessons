@@ -61,6 +61,20 @@ public class App
             c -> "Toyota".equals(c.getBrand())
         ));
 
+        System.out.println("\n=== Testing negate method ===");
+        System.out.println("\nNOT Red cars (using Criterion.negate):");
+        showAll(cars, Criterion.negate(getColorCriterion("RED")));
+
+        System.out.println("\nNOT Toyota cars:");
+        showAll(cars, Criterion.negate(c -> "Toyota".equals(c.getBrand())));
+
+        System.out.println("\nNOT (Red OR Blue) cars:");
+        showAll(cars, Criterion.negate(orCriterion(getColorCriterion("RED"), getColorCriterion("BLUE"))));
+
+        System.out.println("\n=== Testing negate with combined criteria ===");
+        System.out.println("\nNOT (Red AND Toyota) - using negate:");
+        showAll(cars, Criterion.negate(andCriterion(getColorCriterion("RED"), c -> "Toyota".equals(c.getBrand()))));
+
     }
 
     private static Criterion<Car> getColorCriterion(String... colors) {

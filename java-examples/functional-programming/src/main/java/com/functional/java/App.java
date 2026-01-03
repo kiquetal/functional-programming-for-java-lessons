@@ -118,12 +118,6 @@ public class App
         return cars;
     }
 
-    static void executeCriteria(CarCriteria n) {
-    System.out.println("Execute");
-    Car c = new Car();
-    System.out.println(n.test(c));
-    }
-
   public  static <E> List<E> getAllCriterion(Iterable<E> inList, Criterion<E> crit) {
         List<E> list = new ArrayList<>();
 

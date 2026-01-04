@@ -2,7 +2,7 @@ package com.functional.java;
 
 public interface Criterion<E>
 {
-    public boolean test(E e);
+    boolean test(E e);
 default Criterion<E> andCriterion(Criterion<E> crit1) {
         return c -> this.test(c) && crit1.test(c);
     }

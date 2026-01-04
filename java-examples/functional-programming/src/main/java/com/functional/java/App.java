@@ -75,10 +75,7 @@ public class App
     private static Criterion<Car> getColorCriterion(String... colors) {
        //implement the Criterion for this color
 
-        return c -> {
-
-            return  Arrays.stream(colors).anyMatch(color -> color.equals(c.getColor()));
-        };
+        return c -> Arrays.stream(colors).anyMatch(color -> color.equals(c.getColor()));
     }
 
     private static List<Car> createTestCars() {

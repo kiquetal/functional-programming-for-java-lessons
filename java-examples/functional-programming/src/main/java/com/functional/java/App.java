@@ -2,8 +2,7 @@ package com.functional.java;
 
 import java.util.*;
 
-import static com.functional.java.Criterion.andCriterion;
-import static com.functional.java.Criterion.orCriterion;
+
 
 /**
  * Hello world!
@@ -42,38 +41,34 @@ public class App
 
         System.out.println("\n=== Testing andCriterion method ===");
         System.out.println("\nRed AND Toyota cars:");
-        showAll(cars, andCriterion(getColorCriterion("RED"), c -> "Toyota".equals(c.getBrand())));
+        showAll(cars, getColorCriterion("RED").andCriterion( c -> "Toyota".equals(c.getBrand())));
 
         System.out.println("\nRed AND BMW cars:");
-        showAll(cars, andCriterion(getColorCriterion("RED"), c -> "BMW".equals(c.getBrand())));
+        showAll(cars, getColorCriterion("RED").andCriterion(c -> "BMW".equals(c.getBrand())));
 
         System.out.println("\n=== Testing orCriterion method ===");
         System.out.println("\nRed OR Toyota cars:");
-        showAll(cars, orCriterion(getColorCriterion("RED"), c -> "Toyota".equals(c.getBrand())));
+        showAll(cars, getColorCriterion("RED").orCriterion(c -> "Toyota".equals(c.getBrand())));
 
         System.out.println("\nBlue OR Green cars:");
-        showAll(cars, orCriterion(getColorCriterion("BLUE"), getColorCriterion("GREEN")));
+        showAll(cars, getColorCriterion("BLUE").orCriterion(getColorCriterion("GREEN")));
 
         System.out.println("\n=== Testing combined criteria ===");
         System.out.println("\n(Red OR Blue) AND Toyota cars:");
-        showAll(cars, andCriterion(
-            orCriterion(getColorCriterion("RED"), getColorCriterion("BLUE")),
+        showAll(cars, getColorCriterion("RED").orCriterion(getColorCriterion("BLUE")).andCriterion(
             c -> "Toyota".equals(c.getBrand())
         ));
 
         System.out.println("\n=== Testing negate method ===");
         System.out.println("\nNOT Red cars (using Criterion.negate):");
-        showAll(cars, Criterion.negate(getColorCriterion("RED")));
-
-        System.out.println("\nNOT Toyota cars:");
-        showAll(cars, Criterion.negate(c -> "Toyota".equals(c.getBrand())));
+        showAll(cars,getColorCriterion("RED").negate());
 
         System.out.println("\nNOT (Red OR Blue) cars:");
-        showAll(cars, Criterion.negate(orCriterion(getColorCriterion("RED"), getColorCriterion("BLUE"))));
+        showAll(cars, getColorCriterion("RED").orCriterion(getColorCriterion("BLUE")).negate());
 
         System.out.println("\n=== Testing negate with combined criteria ===");
         System.out.println("\nNOT (Red AND Toyota) - using negate:");
-        showAll(cars, Criterion.negate(andCriterion(getColorCriterion("RED"), c -> "Toyota".equals(c.getBrand()))));
+        showAll(cars, getColorCriterion("RED").andCriterion(c -> "Toyota".equals(c.getBrand())).negate());
 
     }
 

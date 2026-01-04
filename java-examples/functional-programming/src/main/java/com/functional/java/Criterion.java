@@ -3,17 +3,15 @@ package com.functional.java;
 public interface Criterion<E>
 {
     public boolean test(E e);
-
- static <E> Criterion<E> andCriterion(Criterion<E> crit1, Criterion<E> crit2) {
-        return c -> crit1.test(c) && crit2.test(c);
+default Criterion<E> andCriterion(Criterion<E> crit1) {
+        return c -> this.test(c) && crit1.test(c);
+    }
+default Criterion<E> orCriterion(Criterion<E> crit1) {
+        return c -> this.test(c) || crit1.test(c);
     }
 
-static  <E> Criterion<E> orCriterion(Criterion<E> crit1, Criterion<E> crit2) {
-        return c -> crit1.test(c) || crit2.test(c);
-    }
-
-    static <E> Criterion<E> negate(Criterion<E> crt)  {
-     return e -> !crt.test(e);
+default Criterion<E> negate()  {
+     return e -> !this.test(e);
     }
 
 

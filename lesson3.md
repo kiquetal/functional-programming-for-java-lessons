@@ -33,10 +33,10 @@ Let's create the behaviour
 
 #### Combiging behaviors - part 2 
 
+We create an interface with static and implementation
 
 
 #### Interfaces for lambdas
-
 
 
 #### Using Predicates in the example

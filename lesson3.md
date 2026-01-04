@@ -38,5 +38,11 @@ We create an interface with static and implementation
 
 #### Interfaces for lambdas
 
+F f(E e) -> Function<E,F>
+boolean f(E e) -> Predicate<E>
+void f(E e) -> Consumer<E>
+E f() -> Supplier<E>
+E f(E e) -> unary binary Operator<E>
+
 
 #### Using Predicates in the example

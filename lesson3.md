@@ -44,5 +44,7 @@ void f(E e) -> Consumer<E>
 E f() -> Supplier<E>
 E f(E e) -> unary binary Operator<E>
 
+To {Int,Long,Double} -> return type
+
 
 #### Using Predicates in the example

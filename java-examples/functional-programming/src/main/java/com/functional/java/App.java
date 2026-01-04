@@ -70,6 +70,32 @@ public class App
         System.out.println("\nNOT (Red AND Toyota) - using negate:");
         showAll(cars, getColorCriterion("RED").andCriterion(c -> "Toyota".equals(c.getBrand())).negate());
 
+        System.out.println("\n=== Testing GasComparator ===");
+        System.out.println("\nCars sorted by gas level (ascending):");
+        List<Car> sortedByGas = new ArrayList<>(cars);
+        sortedByGas.sort(new GasComparator());
+        sortedByGas.forEach(System.out::println);
+
+        System.out.println("\nCars sorted by gas level (descending):");
+        List<Car> sortedByGasDesc = new ArrayList<>(cars);
+        sortedByGasDesc.sort(new GasComparator().reversed());
+        sortedByGasDesc.forEach(System.out::println);
+
+        System.out.println("\nCars with gas level > 10.0:");
+        showAll(cars, c -> c.getGasLevel() > 10.0);
+
+        System.out.println("\nCar with minimum gas level:");
+        Car minGasCar = cars.stream().min(new GasComparator()).orElse(null);
+        if (minGasCar != null) {
+            System.out.println(minGasCar);
+        }
+
+        System.out.println("\nCar with maximum gas level:");
+        Car maxGasCar = cars.stream().max(new GasComparator()).orElse(null);
+        if (maxGasCar != null) {
+            System.out.println(maxGasCar);
+        }
+
     }
 
     private static Criterion<Car> getColorCriterion(String... colors) {
@@ -84,22 +110,27 @@ public class App
         Car car1 = new Car();
         car1.setColor("RED");
         car1.setBrand("Toyota");
+        car1.setGasLevel(15.5);
 
         Car car2 = new Car();
         car2.setColor("BLUE");
         car2.setBrand("Honda");
+        car2.setGasLevel(8.2);
 
         Car car3 = new Car();
         car3.setColor("GREEN");
         car3.setBrand("Ford");
+        car3.setGasLevel(20.0);
 
         Car car4 = new Car();
         car4.setColor("RED");
         car4.setBrand("BMW");
+        car4.setGasLevel(5.5);
 
         Car car5 = new Car();
         car5.setColor("WHITE");
         car5.setBrand("Toyota");
+        car5.setGasLevel(12.0);
 
         cars.add(car1);
         cars.add(car2);
@@ -163,6 +194,8 @@ interface CarCriteria {
 class Car {
 
     private String color;
+    private String brand;
+    private double gasLevel; // Gas level in gallons or liters
 
     public String getColor()
     {
@@ -184,11 +217,19 @@ class Car {
         this.brand = brand;
     }
 
-    private String brand;
+    public double getGasLevel()
+    {
+        return gasLevel;
+    }
+
+    public void setGasLevel(double gasLevel)
+    {
+        this.gasLevel = gasLevel;
+    }
 
     @Override
     public String toString() {
-        return "Car{color='" + color + "', brand='" + brand + "'}";
+        return "Car{color='" + color + "', brand='" + brand + "', gasLevel=" + gasLevel + "}";
     }
 
 }

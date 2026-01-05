@@ -15,6 +15,8 @@ Using a wrapper.
 #### Planning a pipeline framework
 Bucket data -> pure function -> bucket data
 
+remember the usage of generic for the data wrapper.
+
 
 #### Implementing a pipeline framework
 

@@ -48,3 +48,5 @@ To {Int,Long,Double} -> return type
 
 
 #### Using Predicates in the example
+
+We just receive an argument and return boolean

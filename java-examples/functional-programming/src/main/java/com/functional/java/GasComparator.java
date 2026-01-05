@@ -11,7 +11,7 @@ public class GasComparator implements Comparator<Car> {
     @Override
     public int compare(Car car1, Car car2) {
         // Compare gas levels
-        return Double.compare(car1.getGasLevel(), car2.getGasLevel());
+        return Double.compare(car1.getGasLevel(),   car2.getGasLevel());
     }
 }
 

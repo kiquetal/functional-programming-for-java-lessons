@@ -1,6 +1,7 @@
 package com.functional.java;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
 
@@ -175,6 +176,15 @@ public class App
         // The target is "captured" in the lambda closure
         return value -> comparator.compare(value, target);
     }
+
+    private static <E> Predicate<E> compareGreater(
+            ToIntFunction<E> comparator)
+    {
+    return value -> comparator.applyAsInt(value) > 0;
+
+    }
+
+
     private static Criterion<Car> getColorCriterion(String... colors) {
        //implement the Criterion for this color
 

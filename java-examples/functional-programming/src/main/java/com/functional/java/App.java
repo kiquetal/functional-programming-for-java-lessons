@@ -1,7 +1,7 @@
 package com.functional.java;
 
 import java.util.*;
-
+import java.util.function.ToIntFunction;
 
 
 /**
@@ -96,8 +96,85 @@ public class App
             System.out.println(maxGasCar);
         }
 
+        // ===== COMPARATOR EXPLANATION =====
+        // Create Bert's car with ONLY 2.0 gallons of gas
+        Car bertCar = new Car();
+        bertCar.setBrand("something look");
+        bertCar.setGasLevel(2);  // Bert has very little gas!
+
+        GasComparator gasComparator = new GasComparator();
+
+        // Create a function that compares ANY car with Bert's car
+        // This "locks in" Bert's car as the second parameter
+        ToIntFunction<Car> compareWithBert = compareWithThis(gasComparator, bertCar);
+
+        System.out.println("\n=== BERT COMPARISON ===");
+        System.out.println("Bert's car gas level: " + bertCar.getGasLevel());
+        System.out.println("\nComparing each car with Bert's car:");
+        System.out.println("Result meanings: -1 (less gas), 0 (equal gas), 1 (more gas)");
+        System.out.println();
+
+        // Iterate through cars and compare each with Bert
+        // WHY DO WE GET 1 FOR ALL CARS?
+        // Because ALL test cars have MORE gas than Bert's 2.0 gallons!
+        // - RED Toyota: 15.5 > 2.0 → returns 1
+        // - BLUE Honda: 8.2 > 2.0 → returns 1
+        // - GREEN Ford: 20.0 > 2.0 → returns 1
+        // - RED BMW: 5.5 > 2.0 → returns 1
+        // - WHITE Toyota: 12.0 > 2.0 → returns 1
+        cars.forEach(car -> {
+            int result = compareWithBert.applyAsInt(car);
+            String comparison = result > 0 ? "MORE" : result < 0 ? "LESS" : "EQUAL";
+            System.out.println(car.getBrand() + " (" + car.getGasLevel() + " gas) vs Bert (2.0 gas) = "
+                + result + " [" + comparison + " gas than Bert]");
+        });
+
+        // ===== DEMONSTRATE ALL THREE COMPARISON RESULTS =====
+        System.out.println("\n=== Demonstrating All Comparison Results ===");
+
+        // Create test cars with different gas levels relative to Bert (2.0)
+        Car lessGasCar = new Car();
+        lessGasCar.setBrand("Empty Tank");
+        lessGasCar.setGasLevel(1.0);  // Less than Bert's 2.0
+
+        Car sameGasCar = new Car();
+        sameGasCar.setBrand("Same as Bert");
+        sameGasCar.setGasLevel(2.0);  // Equal to Bert's 2.0
+
+        Car moreGasCar = new Car();
+        moreGasCar.setBrand("Full Tank");
+        moreGasCar.setGasLevel(15.0);  // More than Bert's 2.0
+
+        System.out.println("Empty Tank (1.0) vs Bert (2.0) = "
+            + compareWithBert.applyAsInt(lessGasCar) + " ← LESS gas (-1)");
+        System.out.println("Same as Bert (2.0) vs Bert (2.0) = "
+            + compareWithBert.applyAsInt(sameGasCar) + " ← EQUAL gas (0)");
+        System.out.println("Full Tank (15.0) vs Bert (2.0) = "
+            + compareWithBert.applyAsInt(moreGasCar) + " ← MORE gas (1)");
+
     }
 
+    /**
+     * Creates a ToIntFunction that compares any value with a fixed target using a comparator.
+     * This is a "partial application" pattern - we "lock in" the target parameter.
+     *
+     * @param comparator The comparator to use for comparison
+     * @param target The fixed value to compare against (e.g., Bert's car)
+     * @return A function that takes ONE value and compares it with the target
+     *
+     * Example: If target has gasLevel = 2.0
+     *   - Input car with gas 15.5 → returns 1 (more than target)
+     *   - Input car with gas 2.0 → returns 0 (equal to target)
+     *   - Input car with gas 1.0 → returns -1 (less than target)
+     */
+    private static <E> ToIntFunction<E> compareWithThis(
+            Comparator<E> comparator,
+            E target
+    ) {
+        // Returns: comparator.compare(inputValue, target)
+        // The target is "captured" in the lambda closure
+        return value -> comparator.compare(value, target);
+    }
     private static Criterion<Car> getColorCriterion(String... colors) {
        //implement the Criterion for this color
 

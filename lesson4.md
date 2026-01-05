@@ -20,7 +20,6 @@ remember the usage of generic for the data wrapper.
 
 #### Implementing a pipeline framework
 
+Dealing with generic methods.
 
-
-
-#### 
+#### Coding immutable data types 

@@ -15,7 +15,7 @@ public class SuperIterable<E> implements Iterable<E>
         this.self = self;
     }
 
-    private SuperIterable<E> filter(Predicate<E> pred) {
+    public SuperIterable<E> filter(Predicate<E> pred) {
         List<E> list = new ArrayList<>();
 
         for (E e : self)
@@ -29,7 +29,7 @@ public class SuperIterable<E> implements Iterable<E>
         return new SuperIterable<E>(list);
     }
 
-    private void forEvery(Consumer<E> cons) {
+    public void forEvery(Consumer<E> cons) {
         for (E e : self) {
             cons.accept(e);
         }
@@ -39,5 +39,28 @@ public class SuperIterable<E> implements Iterable<E>
     public Iterator<E> iterator()
     {
         return self.iterator();
+    }
+
+    public static void main(String[] args) {
+        // Create a list of integers
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        SuperIterable<Integer> superIterable = new SuperIterable<>(numbers);
+
+        System.out.println("Testing filter method - getting even numbers:");
+        SuperIterable<Integer> evenNumbers = superIterable.filter(n -> n % 2 == 0);
+        evenNumbers.forEvery(n -> System.out.println("Even: " + n));
+
+        System.out.println("\nTesting filter method - getting numbers > 5:");
+        SuperIterable<Integer> largeNumbers = superIterable.filter(n -> n > 5);
+        largeNumbers.forEvery(n -> System.out.println("Large: " + n));
+
+        System.out.println("\nTesting forEvery method - printing all numbers:");
+        superIterable.forEvery(n -> System.out.println("Number: " + n));
+
+        System.out.println("\nChaining filter and forEvery:");
+        superIterable
+            .filter(n -> n > 3)
+            .filter(n -> n < 8)
+            .forEvery(n -> System.out.println("Between 3 and 8: " + n));
     }
 }

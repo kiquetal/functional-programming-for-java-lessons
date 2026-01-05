@@ -2,7 +2,8 @@
 
 #### Concepts of pure functions
 
-
+f(x) => x + 2
+equivalent
 
 
 #### Pure functions in practice

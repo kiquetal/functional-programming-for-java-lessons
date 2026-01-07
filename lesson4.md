@@ -24,4 +24,6 @@ Dealing with generic methods.
 
 #### Coding immutable data types
 
- 
+Creating the map function
+
+static <F> map(Consumer<E> consumer) 

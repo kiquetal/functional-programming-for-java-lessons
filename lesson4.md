@@ -27,3 +27,5 @@ Dealing with generic methods.
 Creating the map function
 
 static <F> map(Consumer<E> consumer) 
+
+

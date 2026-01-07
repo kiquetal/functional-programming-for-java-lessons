@@ -34,4 +34,18 @@ static <F> map(Consumer<E> consumer)
 Always think if you return a List, Stream, and you want a single colleciton use flatmap
 
 
+#### Handling Lost Boundaries in FlatMap
 
+When using `flatMap`, you flatten a nested structure (like `User -> List<Email>`) into a single sequence (just `Email`s). A common issue is "losing the boundary" or the context of the outer element (the `User`).
+
+To resolve this using `SuperIterable` as is:
+Embed a `map` operation *inside* the function passed to `flatMap`. This allows you to capture the outer element (context) and pair it with the inner element.
+
+Example (`com.functional.java.PreservingContextExample`):
+```java
+users.flatMap(user -> 
+    new SuperIterable<>(user.getEmails())
+        .map(email -> "User: " + user.getName() + " -> " + email)
+)
+```
+This preserves the `user` context for each `email` in the resulting flat list.

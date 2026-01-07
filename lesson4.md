@@ -28,4 +28,10 @@ Creating the map function
 
 static <F> map(Consumer<E> consumer) 
 
+#### Remember the difference between map and flatmap
+
+
+Always think if you return a List, Stream, and you want a single colleciton use flatmap
+
+
 

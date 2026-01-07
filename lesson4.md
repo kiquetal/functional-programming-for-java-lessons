@@ -48,4 +48,9 @@ users.flatMap(user ->
         .map(email -> "User: " + user.getName() + " -> " + email)
 )
 ```
+
 This preserves the `user` context for each `email` in the resulting flat list.
+
+#### Another wrapper
+
+Optional?

@@ -148,10 +148,26 @@ public class App
 
         System.out.println("Empty Tank (1.0) vs Bert (2.0) = "
             + compareWithBert.applyAsInt(lessGasCar) + " ← LESS gas (-1)");
+        System.out.println("Empty Tank (1.0) vs Bert (2.0) = "
+            + compareWithBert.applyAsInt(lessGasCar) + " ← LESS gas (-1)");
         System.out.println("Same as Bert (2.0) vs Bert (2.0) = "
             + compareWithBert.applyAsInt(sameGasCar) + " ← EQUAL gas (0)");
         System.out.println("Full Tank (15.0) vs Bert (2.0) = "
             + compareWithBert.applyAsInt(moreGasCar) + " ← MORE gas (1)");
+
+        // ===== TESTING NEW FACTORY METHODS =====
+        System.out.println("\n=== Testing New Factory Methods ===");
+        Car passengerCar = Car.withGasColorPassengers(12.5, "PURPLE", "Toyota", "Alice", "Bob");
+        System.out.println("Passenger Car: " + passengerCar);
+
+        Car fullyLoadedCar = Car.withGasColorPassengersAndTrunk(
+            25.0,
+            "ORANGE",
+            "Honda",
+            new String[]{"Charlie", "David"},
+            new String[]{"Suitcase", "Backpack", "Cooler"}
+        );
+        System.out.println("Fully Loaded Car: " + fullyLoadedCar);
 
     }
 
@@ -283,6 +299,8 @@ class Car {
     private String color;
     private String brand;
     private double gasLevel; // Gas level in gallons or liters
+    private List<String> passengers = new ArrayList<>();
+    private List<String> trunk = new ArrayList<>();
 
     public String getColor()
     {
@@ -314,9 +332,45 @@ class Car {
         this.gasLevel = gasLevel;
     }
 
-    @Override
-    public String toString() {
-        return "Car{color='" + color + "', brand='" + brand + "', gasLevel=" + gasLevel + "}";
+    public List<String> getPassengers() {
+        return passengers;
     }
 
+    public void setPassengers(List<String> passengers) {
+        this.passengers = passengers;
+    }
+
+    public List<String> getTrunk() {
+        return trunk;
+    }
+
+    public void setTrunk(List<String> trunk) {
+        this.trunk = trunk;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{color='" + color + "', brand='" + brand + "', gasLevel=" + gasLevel + ", passengers=" + passengers + ", trunk=" + trunk + "}";
+    }
+
+    public static Car withGasColorPassengers(double gas, String color, String brand, String... passengers)
+    {
+        Car car = new Car();
+        car.setGasLevel(gas);
+        car.setColor(color);
+        car.setBrand(brand);
+        car.setPassengers(Arrays.asList(passengers));
+        return car;
+    }
+
+    public static Car withGasColorPassengersAndTrunk(double gas, String color, String brand, String[] passengers, String[] trunk)
+    {
+        Car car = new Car();
+        car.setGasLevel(gas);
+        car.setColor(color);
+        car.setBrand(brand);
+        car.setPassengers(Arrays.asList(passengers));
+        car.setTrunk(Arrays.asList(trunk));
+        return car;
+    }
 }

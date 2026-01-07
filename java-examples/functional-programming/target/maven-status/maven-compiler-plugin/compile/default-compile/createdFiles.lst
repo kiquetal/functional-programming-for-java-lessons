@@ -1,6 +1,9 @@
+com/functional/java/FlatMapExamples$Car.class
 com/functional/java/GasComparator.class
 com/functional/java/App.class
-com/functional/java/Criterion.class
-com/functional/java/Car.class
+com/functional/java/FlatMapExamples$Person.class
+com/functional/java/FlatMapExamples.class
 com/functional/java/CarCriteria.class
 com/functional/java/App$CarScratch.class
+com/functional/java/Criterion.class
+com/functional/java/Car.class

@@ -28,3 +28,11 @@ Imagine you have a large list of **Customer Orders** and you want to calculate t
 
 **The Execution Flow:**
 Only when you call the **Sum** (Terminal) operation does the computer start looking at the orders. It pulls the first order, checks if it's for Paris and over $100. If so, it takes the price. Then it moves to the next order. It doesn't create a temporary list of Paris orders, then another list of expensive orders; it processes each item through the entire pipeline one by one, efficiently and only when requested by the final step.
+
+
+###### Getting a result
+
+Remember to wrap with Optional to be able to use map, and so on methods.
+
+
+###### More flexible ways to a result.

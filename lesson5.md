@@ -35,4 +35,9 @@ Only when you call the **Sum** (Terminal) operation does the computer start look
 Remember to wrap with Optional to be able to use map, and so on methods.
 
 
+##### Notes about concurrency
+
+Multiples threads:
+
+
 ###### More flexible ways to a result.

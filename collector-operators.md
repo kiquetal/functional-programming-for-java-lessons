@@ -42,6 +42,17 @@ It generally returns a `Map<K, List<V>>`, where `K` is the classification key an
 
 ---
 
+## Collectors.joining
+
+`joining` is used to concatenate the input elements (which must be `CharSequence`s) into a single `String`, in encounter order. It's extremely useful for creating readable summaries of data.
+
+### Common Overloads
+1.  **`joining()`**: Simple concatenation.
+2.  **`joining(delimiter)`**: Concatenates with a delimiter between elements.
+3.  **`joining(delimiter, prefix, suffix)`**: Concatenates with a delimiter, and wraps the result in a prefix and suffix.
+
+---
+
 ## Examples
 
 Assume the following `User` class:
@@ -117,4 +128,21 @@ Map<String, List<User>> usersByCity = users.stream()
 // Result: { "London"=2, "New York"=1 }
 Map<String, Long> countByCity = users.stream()
     .collect(Collectors.groupingBy(User::getCity, Collectors.counting()));
+```
+
+### 3. Joining Strings (`joining`)
+Scenario: Concatenate the names of all users into a single comma-separated string.
+
+```java
+// Simple Joining
+// Result: "Alice, Charlie, Bob"
+String names = users.stream()
+    .map(User::getName)
+    .collect(Collectors.joining(", "));
+
+// Joining with Prefix and Suffix
+// Result: "[Alice, Charlie, Bob]"
+String namesWithBrackets = users.stream()
+    .map(User::getName)
+    .collect(Collectors.joining(", ", "[", "]"));
 ```

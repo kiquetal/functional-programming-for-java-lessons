@@ -78,5 +78,19 @@ public class CollectorOperators {
             .collect(Collectors.groupingBy(User::getCity, Collectors.counting()));
             
         System.out.println("Count by City: " + countByCity);
+
+        System.out.println("\n=== 3. Joining Examples ===");
+        
+        // Simple Joining
+        String names = userList.stream()
+            .map(User::getName)
+            .collect(Collectors.joining(", "));
+        System.out.println("Joined Names: " + names);
+
+        // Joining with Prefix and Suffix
+        String namesWithBrackets = userList.stream()
+            .map(User::getName)
+            .collect(Collectors.joining(", ", "[", "]"));
+        System.out.println("Joined Names with brackets: " + namesWithBrackets);
     }
 }

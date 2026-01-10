@@ -1,3 +1,5 @@
+com/functional/java/MethodReferenceExample.class
+com/functional/java/MethodReferenceExample$Person.class
 com/functional/java/App.class
 com/functional/java/SuperIterable.class
 com/functional/java/FlatMapExamples$Person.class
@@ -6,6 +8,7 @@ com/functional/java/App$CarScratch.class
 com/functional/java/CollectExample.class
 com/functional/java/CollectExample$1WordStats.class
 com/functional/java/PreservingContextExample$User.class
+com/functional/java/MethodReferenceDifference$Printer.class
 com/functional/java/PreservingContextExample.class
 com/functional/java/Car.class
 com/functional/java/CollectorOperators$User.class
@@ -13,4 +16,5 @@ com/functional/java/FlatMapExamples$Car.class
 com/functional/java/GasComparator.class
 com/functional/java/CollectorOperators.class
 com/functional/java/FlatMapExamples.class
+com/functional/java/MethodReferenceDifference.class
 com/functional/java/Criterion.class

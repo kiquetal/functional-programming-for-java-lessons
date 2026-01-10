@@ -240,6 +240,30 @@ Optional<Theme> theme = user.getSettings()
     .flatMap(Settings::getTheme); // Result is Optional<Theme> - Clean!
 ```
 
+### Handling Lists with Optional Fields: The `map` + `orElse` Pattern
+
+A common requirement is transforming a List of objects where each object has an `Optional` field, and you want to extract that field providing a default value if it's missing.
+
+**Scenario:** You have a list of `User`s. Each `User` has a method `getNickname()` which returns `Optional<String>`. You want a list of all nicknames, using "Anonymous" if the nickname is missing.
+
+**The Solution:** Use `Stream.map` combined with `Optional.orElse`.
+
+```java
+List<User> users = ...;
+
+List<String> nicknames = users.stream()
+    // 1. user.getNickname() returns Optional<String>
+    // 2. .orElse("Anonymous") unwraps it, returning the string "Anonymous" if empty.
+    .map(user -> user.getNickname().orElse("Anonymous"))
+    .collect(Collectors.toList());
+```
+
+**Why not `flatMap` here?**
+If you used `flatMap` (e.g., converting the Optional to a Stream), you would filter out the users without nicknames entirely (because an empty Optional becomes an empty Stream).
+
+*   **Use `map` + `orElse`** when you want to **keep the same number of elements**, replacing missing data with defaults.
+*   **Use `flatMap`** (turning Optional to Stream) when you want to **filter out** missing data.
+
 ### Summary: The "Type" Rule of Thumb
 
 If you are inside a pipeline of type `Container<T>` (where Container is `Stream`, `Optional`, `CompletableFuture`, etc.):

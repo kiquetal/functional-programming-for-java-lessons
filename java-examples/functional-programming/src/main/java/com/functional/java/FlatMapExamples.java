@@ -60,6 +60,23 @@ public class FlatMapExamples {
             .flatMap(car -> car.getInsuranceIdentifier())
             .orElse("No Insurance");
         System.out.println("Person without car insurance: " + noCarInsurance);
+
+        System.out.println("\n");
+        System.out.println("=== 4. Stream of Objects with Optionals (Map + orElse) ===");
+        // Scenario: We have a list of Users. Some have nicknames, some don't.
+        // We want a list of ALL nicknames, using "Anonymous" for missing ones.
+        
+        List<User> users = Arrays.asList(
+            new User("Alice", "Ally"),
+            new User("Bob", null),
+            new User("Charlie", "Chuck")
+        );
+
+        List<String> nicknames = users.stream()
+            .map(user -> user.getNickname().orElse("Anonymous"))
+            .collect(Collectors.toList());
+
+        System.out.println("All nicknames (including defaults): " + nicknames);
     }
 
     // Helper classes for the Optional example
@@ -80,6 +97,20 @@ public class FlatMapExamples {
 
         public Optional<String> getInsuranceIdentifier() {
             return Optional.ofNullable(insuranceId);
+        }
+    }
+
+    static class User {
+        private String name;
+        private String nickname;
+
+        public User(String name, String nickname) {
+            this.name = name;
+            this.nickname = nickname;
+        }
+
+        public Optional<String> getNickname() {
+            return Optional.ofNullable(nickname);
         }
     }
 }

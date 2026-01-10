@@ -53,7 +53,44 @@ List<String> upperCaseNames = names.stream()
 
 ---
 
-## The "Don't Do This" Example
+## Deep Dive: `collect` with Arguments
+
+While `Collectors.toList()` is convenient, `collect` actually has a powerful 3-argument version that reveals how it works under the hood. This is particularly useful when you want to collect into a custom container or a `StringBuilder`.
+
+### The 3-Argument Signature
+`collect(Supplier<R> supplier, BiConsumer<R, T> accumulator, BiConsumer<R, R> combiner)`
+
+1.  **Supplier**: Creates a new instance of the result container (e.g., `() -> new ArrayList<>()`).
+2.  **Accumulator**: Incorporates a new element into the result container (e.g., `(list, element) -> list.add(element)`).
+3.  **Combiner**: Merges two result containers into one (used during parallel processing).
+
+### Example: Custom String Aggregation
+Combining strings with a custom delimiter without using `Collectors.joining()`.
+
+```java
+List<String> words = Arrays.asList("apple", "banana", "cherry");
+
+String result = words.stream()
+    .filter(s -> s.startsWith("a") || s.startsWith("b"))
+    .map(String::toUpperCase)
+    .collect(
+        StringBuilder::new,           // 1. Supplier: Start with a new StringBuilder
+        (sb, s) -> {                  // 2. Accumulator: Add strings to the builder
+            if (sb.length() > 0) sb.append(", ");
+            sb.append(s);
+        },
+        (sb1, sb2) -> {               // 3. Combiner: Merge builders (for parallel streams)
+            if (sb1.length() > 0 && sb2.length() > 0) sb1.append(", ");
+            sb1.append(sb2);
+        }
+    ).toString();
+
+// Result: "APPLE, BANANA"
+```
+
+---
+
+## Efficiency & Performance
 
 Here is a demonstration of why `reduce` is bad for accumulating lists.
 
